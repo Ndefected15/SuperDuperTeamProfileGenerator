@@ -3,6 +3,7 @@ const fs = require("fs");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Team = [];
 
 function init() {
   newManager();
@@ -30,8 +31,7 @@ function newManager() {
     // destructure name from the prompt object
     .then(({ name, id, email }) => {
       this.Manager = new Manager(name, id, email);
-
-      console.log(this.Manager);
+      Team.push(this.Manager);
       newEngineer();
       //this.startNewBattle();
     });
@@ -64,8 +64,7 @@ function newEngineer() {
     // destructure name from the prompt object
     .then(({ name, id, email, github }) => {
       this.Engineer = new Engineer(name, id, email, github);
-
-      console.log(this.Engineer);
+      Team.push(this.Engineer);
 
       newIntern();
     });
@@ -99,7 +98,24 @@ function newIntern() {
     .then(({ name, id, email, school }) => {
       this.Intern = new Intern(name, id, email, school);
 
-      console.log(this.Intern);
+      Team.push(this.Intern);
+      console.log(Team);
     });
 }
 init();
+//   .then((portfolioData) => {
+//     return generatePage(portfolioData);
+//   })
+//   .then((pageHTML) => {
+//     return writeFile(pageHTML);
+//   })
+//   .then((writeFileResponse) => {
+//     console.log(writeFileResponse);
+//     return copyFile();
+//   })
+//   .then((copyFileResponse) => {
+//     console.log(copyFileResponse);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
