@@ -32,8 +32,29 @@ function newManager() {
     .then(({ name, id, email }) => {
       this.Manager = new Manager(name, id, email);
       Team.push(this.Manager);
-      newEngineer();
+      newEmployee();
       //this.startNewBattle();
+    });
+}
+
+function newEmployee() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "confirmAddEmployee",
+        message: "What would you like to do?",
+        choices: ["Add Engineer", "Add Intern", "Im Finished"],
+      },
+    ])
+    .then(({ confirmAddEmployee }) => {
+      if (confirmAddEmployee === "Add Engineer") {
+        newEngineer();
+      } else if (confirmAddEmployee === "Add Intern") {
+        newIntern();
+      } else if (confirmAddEmployee === "Im Finished") {
+        console.log(Team);
+      }
     });
 }
 
@@ -65,8 +86,7 @@ function newEngineer() {
     .then(({ name, id, email, github }) => {
       this.Engineer = new Engineer(name, id, email, github);
       Team.push(this.Engineer);
-
-      newIntern();
+      newEmployee();
     });
 }
 
@@ -99,7 +119,7 @@ function newIntern() {
       this.Intern = new Intern(name, id, email, school);
 
       Team.push(this.Intern);
-      console.log(Team);
+      newEmployee();
     });
 }
 init();
