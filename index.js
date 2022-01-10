@@ -1,26 +1,38 @@
+// Page Generator
+const generateHTML = require("./src/generateHTML");
+
+// Node Modules
 const inquirer = require("inquirer");
 const fs = require("fs");
+
+//Team Members
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+
+//Team Array
 const Team = [];
 
-function init() {
-  newManager();
-}
-
-function newManager() {
+const newManager = () => {
   inquirer
     .prompt([
       {
         type: "text",
         name: "name",
         message: "Enter the team managers name:",
+        validate: (nameInput) => {
+          if (nameInput) {
+            return true;
+          } else {
+            console.log("Please enter the manager's name!");
+            return false;
+          }
+        },
       },
       {
         type: "text",
         name: "id",
-        message: "Enter the team managers employee id:",
+        message: "Enter the team managers id:",
       },
       {
         type: "text",
@@ -28,16 +40,14 @@ function newManager() {
         message: "Enter the team managers email:",
       },
     ])
-    // destructure name from the prompt object
     .then(({ name, id, email }) => {
       this.Manager = new Manager(name, id, email);
       Team.push(this.Manager);
       newEmployee();
-      //this.startNewBattle();
     });
-}
+};
 
-function newEmployee() {
+const newEmployee = () => {
   inquirer
     .prompt([
       {
@@ -56,9 +66,9 @@ function newEmployee() {
         console.log(Team);
       }
     });
-}
+};
 
-function newEngineer() {
+const newEngineer = () => {
   inquirer
     .prompt([
       {
@@ -88,9 +98,9 @@ function newEngineer() {
       Team.push(this.Engineer);
       newEmployee();
     });
-}
+};
 
-function newIntern() {
+const newIntern = () => {
   inquirer
     .prompt([
       {
@@ -121,21 +131,15 @@ function newIntern() {
       Team.push(this.Intern);
       newEmployee();
     });
-}
-init();
-//   .then((portfolioData) => {
-//     return generatePage(portfolioData);
-//   })
-//   .then((pageHTML) => {
-//     return writeFile(pageHTML);
-//   })
-//   .then((writeFileResponse) => {
-//     console.log(writeFileResponse);
-//     return copyFile();
-//   })
-//   .then((copyFileResponse) => {
-//     console.log(copyFileResponse);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+};
+
+newManager();
+// .then((Team) => {
+//   return generateHTML(Team);
+// })
+// .then((pageHTML) => {
+//   return writeFile(pageHTML);
+// })
+// .catch((err) => {
+//   console.log(err);
+// });
