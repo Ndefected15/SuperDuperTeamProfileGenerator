@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const generateManager = function (manager) {
   return `
   <div class="col-4 mt-4">
@@ -83,6 +85,7 @@ generateHTML = (data) => {
 
       pageArray.push(internCard);
     }
+    // console.log(pageArray);
   }
 
   // joining strings
@@ -95,7 +98,7 @@ generateHTML = (data) => {
 
 // generate html page
 const generateTeamPage = function (employeeCards) {
-  return `
+  const HTML = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,6 +132,12 @@ const generateTeamPage = function (employeeCards) {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </html>
 `;
+
+  fs.writeFile("./dist/team-profile.html", HTML, function (err) {
+    if (err) {
+      console.log(err);
+    }
+  });
 };
 
 // export to index
