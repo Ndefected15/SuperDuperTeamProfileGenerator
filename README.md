@@ -24,6 +24,8 @@
   ## Usage:
   Use this command-line application to quickly generate a professional HTML for a team of developers
   
+  https://drive.google.com/file/d/1a_mM7WNX4jzpMsAkgfBwLZ8AjNH2yaku/view
+  
   ## License:
   MIT
   
@@ -31,7 +33,7 @@
   Built by Nicholas Defex
   
   ## Testing:
-  In the Terminal run "node index"
+  In the Terminal run "npm test"
   
   ## Additional Info:
   - Github: [Ndefected15](https://github.com/Ndefected15)
