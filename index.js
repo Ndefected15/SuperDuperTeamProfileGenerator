@@ -80,6 +80,16 @@ const newEmployee = () => {
     HTML Created!    
   =================
   `);
+        sendData();
+        // .then((pageHTML) => {
+        //   return writeFile(pageHTML);
+        // })
+        // .catch((err) => {
+        //   console.log(err);
+        // });
+        //   console.log(Team);
+        // }
+        // });
       }
     });
 };
@@ -160,13 +170,8 @@ const newIntern = () => {
     });
 };
 
+const sendData = function () {
+  return generateHTML(Team);
+};
+
 newManager();
-// .then((Team) => {
-//   return generateHTML(Team);
-// })
-// .then((pageHTML) => {
-//   return writeFile(pageHTML);
-// })
-// .catch((err) => {
-//   console.log(err);
-// });
