@@ -14,6 +14,12 @@ const Intern = require("./lib/Intern");
 const Team = [];
 
 const newManager = () => {
+  console.log(`
+  =================
+  Add a New Manager
+  =================
+  `);
+
   inquirer
     .prompt([
       {
@@ -48,6 +54,12 @@ const newManager = () => {
 };
 
 const newEmployee = () => {
+  console.log(`
+  ==================
+  Add a New Employee
+  ==================
+  `);
+
   inquirer
     .prompt([
       {
@@ -63,12 +75,22 @@ const newEmployee = () => {
       } else if (confirmAddEmployee === "Add Intern") {
         newIntern();
       } else if (confirmAddEmployee === "Im Finished") {
-        console.log(Team);
+        console.log(`
+  =================
+    HTML Created!    
+  =================
+  `);
       }
     });
 };
 
 const newEngineer = () => {
+  console.log(`
+  =================
+      Engineer    
+  =================
+  `);
+
   inquirer
     .prompt([
       {
@@ -101,6 +123,11 @@ const newEngineer = () => {
 };
 
 const newIntern = () => {
+  console.log(`
+  =================
+       Intern    
+  =================
+  `);
   inquirer
     .prompt([
       {
